@@ -41,10 +41,10 @@ public class ActivitySummary {
         return totalDuration;
     }
 
-    public double totalScore() {
-        double totalScore = 0;
+    public int totalScore() {
+        int totalScore = 0;
         for (Sportable entry : entries) {
-            double score = entry.getScore();
+            int score = entry.getScore();
             totalScore += score;
         }
         return totalScore;
@@ -54,7 +54,7 @@ public class ActivitySummary {
         return this.totalDuration()/this.countEntries();
     }
 
-    public double averageScore(){
+    public int averageScore(){
         return this.totalScore()/this.countEntries();
     }
 }

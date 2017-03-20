@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  */
 public class activityRecordTest {
 
+
     ActivityRecord activityRecord;
 
     @Before

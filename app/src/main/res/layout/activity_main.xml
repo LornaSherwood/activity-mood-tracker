@@ -12,6 +12,7 @@
     <EditText
         android:id="@+id/duration_text"
         android:hint="@string/question"
+        android:text=""
         android:textSize="30dp"
         android:layout_marginTop="50dp"
         android:layout_width="277dp"

@@ -1,5 +1,6 @@
 package example.codeclan.com.activity_mood_tracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +25,14 @@ public class moodSummaryActivity extends AppCompatActivity {
         runningText = (TextView)findViewById(R.id.running_text);
         swimmingText = (TextView)findViewById(R.id.swimming_text);
         cyclingText = (TextView)findViewById(R.id.cycling_text);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String durationEntry = extras.getString("durationEntry");
+        runningText.setText(durationEntry);
+
+//        String runningChoice = extras.getString("chosen_sport");
+//        runningText.setText(runningChoice);
     }
 
 

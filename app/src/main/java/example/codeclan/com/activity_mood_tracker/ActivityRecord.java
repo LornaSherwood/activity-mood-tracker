@@ -9,9 +9,9 @@ package example.codeclan.com.activity_mood_tracker;
         private String sport;
         private String date;
         private int duration;
-        private double score;
+        private int score;
 
-        public ActivityRecord(String sport, String date, int duration, double score) {
+        public ActivityRecord(String sport, String date, int duration, int score) {
             this.sport = sport;
             this.date = date;
             this.duration = duration;
@@ -30,7 +30,7 @@ package example.codeclan.com.activity_mood_tracker;
             return this.duration;
         }
 
-        public double getScore(){
+        public int getScore(){
             return this.score;
         }
 

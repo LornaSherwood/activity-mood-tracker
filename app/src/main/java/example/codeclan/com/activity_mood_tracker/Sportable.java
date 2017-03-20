@@ -8,6 +8,6 @@ import java.util.*;
 public interface Sportable {
 
     int getDuration();
-    double getScore();
+    int getScore();
 
 }
