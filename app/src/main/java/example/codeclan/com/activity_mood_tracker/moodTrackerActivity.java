@@ -1,4 +1,5 @@
 package example.codeclan.com.activity_mood_tracker;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,6 +47,8 @@ public class moodTrackerActivity extends AppCompatActivity {
 
     public void onSubmitButtonClicked(View button) {
         Log.d(getClass().toString(), "onSubmitButtonClicked was called");
+        Intent intent = new Intent(moodTrackerActivity.this, moodSummaryActivity.class);
+        startActivity(intent);
     }
 
 

@@ -26,4 +26,10 @@
     </string-array>
 
     <string name="submit">Submit</string>
+    <string name="summary_activity_title">Summary:</string>
+    <string name="running_text">Running...</string>
+    <string name="swimming_text">Swimming...</string>
+    <string name="cycling_text">Cycling...</string>
+
+
 </resources>

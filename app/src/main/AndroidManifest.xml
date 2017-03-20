@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".moodSummaryActivity"
+            android:label="@string/summary_activity_title"
+            android:parentActivityName="example.codeclan.com.activity_mood_tracker.moodTrackerActivity">
+        </activity>
+
 
 
     </application>
