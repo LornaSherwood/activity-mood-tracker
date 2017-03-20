@@ -1,5 +1,5 @@
 package example.codeclan.com.activity_mood_tracker;
-
+import android.util.Log;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,9 @@ public class ActivitySummary {
         entries = new ArrayList<Sportable>();
     }
 
-
+    public void onShakeButtonClicked(){
+        Log.d(getClass().toString(), "onShakeButtonClicked method was called");
+    }
 
     public String getSport() {
         return sport;

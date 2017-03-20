@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <Spinner
+        android:id="@+id/sports_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+
+    <EditText
+        android:id="@+id/duration_text"
+        android:hint="@string/question"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="277dp"
+        android:layout_height="27dp"
+        android:layout_weight="0.11" />
+
+    <Spinner
+        android:id="@+id/mood_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/submit_button"
+        android:text="@string/submit"
+        android:onClick="onSubmitButtonClicked"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
