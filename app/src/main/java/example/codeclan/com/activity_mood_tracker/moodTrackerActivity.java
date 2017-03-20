@@ -47,11 +47,14 @@ public class moodTrackerActivity extends AppCompatActivity {
 
     public void onSubmitButtonClicked(View button) {
         Log.d(getClass().toString(), "onSubmitButtonClicked was called");
+        
+    }
+
+    public void onSummaryButtonClicked(View button) {
+        Log.d(getClass().toString(), "onSummaryButtonClicked was called");
         Intent intent = new Intent(moodTrackerActivity.this, moodSummaryActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }
