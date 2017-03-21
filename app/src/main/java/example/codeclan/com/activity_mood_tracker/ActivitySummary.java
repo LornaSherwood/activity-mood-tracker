@@ -1,6 +1,7 @@
 package example.codeclan.com.activity_mood_tracker;
 import android.util.Log;
 import java.util.ArrayList;
+import android.preference.PreferenceManager;
 
 /**
  * Created by user on 18/03/2017.
@@ -8,27 +9,18 @@ import java.util.ArrayList;
 
 public class ActivitySummary {
 
-    private String sport;
     private ArrayList<Sportable> entries;
 
-    public ActivitySummary(String sport) {
-        this.sport = sport;
+    public ActivitySummary() {
         entries = new ArrayList<Sportable>();
     }
 
-    public void onShakeButtonClicked(){
-        Log.d(getClass().toString(), "onShakeButtonClicked method was called");
-    }
-
-    public String getSport() {
-        return sport;
-    }
 
     public int countEntries(){
         return this.entries.size();
     }
 
-    public void getEntries(Sportable entry) {
+    public void addEntries(Sportable entry) {
         entries.add(entry);
     }
 

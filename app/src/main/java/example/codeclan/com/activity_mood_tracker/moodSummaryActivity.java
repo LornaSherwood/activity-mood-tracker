@@ -29,7 +29,7 @@ public class moodSummaryActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String durationEntry = extras.getString("durationEntry");
-        runningText.setText(durationEntry);
+        runningText.setText(durationEntry); // for testing
 
 //        String runningChoice = extras.getString("chosen_sport");
 //        runningText.setText(runningChoice);

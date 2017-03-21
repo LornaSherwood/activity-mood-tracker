@@ -1,5 +1,6 @@
 package example.codeclan.com.activity_mood_tracker;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,8 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
-import java.util.Date;
 
 /**
  * Created by user on 19/03/2017.
@@ -22,11 +27,12 @@ public class moodTrackerActivity extends AppCompatActivity {
     Spinner moodChoice;
     Button submitButton;
     Intent intent;
+    SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); //call oncreate from super class
-        setContentView(R.layout.activity_main); //set content view to what's in activity main
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Log.d(getClass().toString(), "onCreate called");
 
         sportChoice = (Spinner)findViewById(R.id.sports_spinner);
@@ -34,17 +40,19 @@ public class moodTrackerActivity extends AppCompatActivity {
         moodChoice = (Spinner)findViewById(R.id.mood_spinner);
         submitButton = (Button)findViewById(R.id.submit_button);
 
-
+        // get choice from sport spinner //
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sports_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sportChoice.setAdapter(adapter);
 
-
+        // get choice from mood spinner //
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.mood_array, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         moodChoice.setAdapter(adapter2);
+
+        mPrefs = getPreferences(MODE_PRIVATE);
 
     }
 
@@ -60,10 +68,50 @@ public class moodTrackerActivity extends AppCompatActivity {
         int moodNum = Integer.parseInt(mood);
 
         ActivityRecord activityRecord = new ActivityRecord(sport, "24-03-2017", durationNum, moodNum);
-        ActivitySummary newSummary = new ActivitySummary(sport);
-        newSummary.getEntries(activityRecord);
-        Log.d(getClass().toString(), newSummary.getSport());
 
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        // get existing activity summary //
+        Gson gson = new Gson();
+        String json = mPrefs.getString("ActivitySummary", "");
+
+
+        // if not null, add activity to summary, else create new summary //
+        if (json != null && !json.isEmpty()) {
+            Log.d("json before new", json);
+            ActivitySummary summary = new ActivitySummary();
+
+            JsonObject summaryObject = (JsonObject) new JsonParser().parse(json);
+            JsonArray summaryEntries = summaryObject.getAsJsonArray("entries");
+
+            for (JsonElement recordElement : summaryEntries) {
+                JsonObject recordObject = recordElement.getAsJsonObject();
+
+                String retrievedSport = recordObject.get("sport").getAsString();
+                String retrievedDate = recordObject.get("date").getAsString();
+                int retrievedDuration = recordObject.get("duration").getAsInt();
+                int retrievedScore = recordObject.get("score").getAsInt();
+
+                ActivityRecord record = new ActivityRecord(retrievedSport, retrievedDate, retrievedDuration, retrievedScore);
+                summary.addEntries(record);
+            }
+            summary.addEntries(activityRecord); // add new activity
+//
+            // store summary //
+            Gson gson2 = new Gson();
+            String json2 = gson2.toJson(summary);
+            prefsEditor.putString("ActivitySummary", json2);
+            prefsEditor.apply();
+
+        } else {
+            ActivitySummary newSummary = new ActivitySummary();
+            newSummary.addEntries(activityRecord);
+            // store summary //
+            Gson gson3 = new Gson();
+            String json3 = gson3.toJson(newSummary);
+            prefsEditor.putString("ActivitySummary", json3);
+            prefsEditor.apply();
+        }
     }
 
     public void onSummaryButtonClicked(View button) {
@@ -74,11 +122,6 @@ public class moodTrackerActivity extends AppCompatActivity {
         intent = new Intent(moodTrackerActivity.this, moodSummaryActivity.class);
         intent.putExtra("durationEntry", duration);
         startActivity(intent);
-
-
-//        intent.putExtra("chosen_sport", sportChoice);
-//        intent.putExtra("entered_duration", durationText);
-//        intent.putExtra("chosen_mood", moodChoice);
 
     }
 

@@ -18,16 +18,11 @@ public class activitySummaryTest {
     public void before() {
         runningEntry1 = new ActivityRecord("Running", "10/15/2015 00:00 -0700", 20, 8);
         runningEntry2 = new ActivityRecord("Running", "10/15/2015 00:00 -0700", 35, 7);
-        activitySummary = new ActivitySummary("Running");
-        activitySummary2 = new ActivitySummary("Running");
+        activitySummary = new ActivitySummary();
+        activitySummary2 = new ActivitySummary();
         activitySummary2.getEntries(runningEntry1);
         activitySummary2.getEntries(runningEntry2);
 
-    }
-
-    @Test
-    public void canGetSport() {
-        assertEquals("Running", activitySummary.getSport());
     }
 
     @Test
