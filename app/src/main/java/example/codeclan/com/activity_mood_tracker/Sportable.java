@@ -9,5 +9,6 @@ public interface Sportable {
 
     int getDuration();
     int getScore();
+    String getSport();
 
 }

@@ -2,27 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/background"
+    android:gravity="center">
+
+    <TextView
+        android:text="@string/title"
+        android:layout_width="300dp"
+        android:textSize="35sp"
+        android:layout_height="15dp"
+        android:id="@+id/title"
+        android:layout_weight="0.33"
+        android:background="@color/background"
+        android:textColor="@color/text_color"/>
 
     <Spinner
-        android:id="@+id/sports_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp" />
+            android:id="@+id/sports_spinner"
+            android:layout_width="277dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="25dp"/>
 
     <EditText
         android:id="@+id/duration_text"
         android:hint="@string/question"
         android:text=""
-        android:textSize="25dp"
-        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:background="?android:attr/colorBackground"
         android:layout_width="277dp"
-        android:layout_height="27dp"
-        android:layout_weight="0.11" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06"
+        android:layout_marginBottom="25dp"/>
+
 
     <Spinner
         android:id="@+id/mood_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp" />
+        android:layout_width="277dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.06" />
 
     <Button
         android:id="@+id/submit_button"
@@ -30,8 +47,9 @@
         android:onClick="onSubmitButtonClicked"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        />
 
     <Button
         android:id="@+id/summary_button"
@@ -40,6 +58,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

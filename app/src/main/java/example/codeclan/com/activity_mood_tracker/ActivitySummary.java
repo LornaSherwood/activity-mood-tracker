@@ -15,39 +15,53 @@ public class ActivitySummary {
         entries = new ArrayList<Sportable>();
     }
 
-
     public int countEntries(){
-        return this.entries.size();
+        return entries.size();
+    }
+
+    public int countArray(ArrayList<Sportable> sportableArrayList){
+        return sportableArrayList.size();
     }
 
     public void addEntries(Sportable entry) {
         entries.add(entry);
     }
 
-    public int totalDuration(){
+    public ArrayList getSportEntries(String sport){
+        ArrayList<Sportable> sportArray = new ArrayList();
+        for (Sportable entry : entries){
+            String sportType = entry.getSport();
+            if ((sportType).equals(sport)){
+                sportArray.add(entry);
+            }
+        }
+        return sportArray;
+    }
+
+    public int totalDuration(ArrayList<Sportable> sportableArrayList){
         int totalDuration = 0;
-        for (Sportable entry : entries) {
+        for (Sportable entry : sportableArrayList) {
             int duration = entry.getDuration();
             totalDuration += duration;
         }
         return totalDuration;
     }
 
-    public int totalScore() {
+    public int totalScore(ArrayList<Sportable> sportableArrayList) {
         int totalScore = 0;
-        for (Sportable entry : entries) {
+        for (Sportable entry : sportableArrayList) {
             int score = entry.getScore();
             totalScore += score;
         }
         return totalScore;
     }
 
-    public int averageDuration(){
-        return this.totalDuration()/this.countEntries();
+    public int averageDuration(ArrayList<Sportable> sportableArrayList){
+        return this.totalDuration(sportableArrayList)/this.countArray(sportableArrayList);
     }
 
-    public int averageScore(){
-        return this.totalScore()/this.countEntries();
+    public int averageScore(ArrayList<Sportable> sportableArrayList){
+        return this.totalScore(sportableArrayList)/this.countArray(sportableArrayList);
     }
 }
 

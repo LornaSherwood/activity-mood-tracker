@@ -1,13 +1,10 @@
 <resources>
     <string name="app_name">Activity_mood_tracker</string>
-
+    <string name="title">Enter Your Activity:</string>
     <string-array name="sports_array">
-        <item>Running</item>
-        <item>Cycling</item>
-        <item>Swimming</item>
         <item>Kayaking</item>
         <item>Paddleboarding</item>
-        <item>Hiking</item>
+        <item>Snorkelling</item>
     </string-array>
 
     <string name="question">duration in mins</string>
@@ -28,9 +25,15 @@
     <string name="submit">Submit</string>
     <string name="summary">Go To Summary</string>
     <string name="summary_activity_title">Summary:</string>
-    <string name="running_text">Running...</string>
-    <string name="swimming_text">Swimming...</string>
-    <string name="cycling_text">Cycling...</string>
+
+
+    <string name="sport1">Kayaking</string>
+    <string name="score">Score: </string>
+
+    <string name="sport2">Paddleboarding:</string>
+    <string name="sport3">Snorkelling:</string>
+
+
 
 
 </resources>

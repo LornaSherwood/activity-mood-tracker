@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="example.codeclan.com.activity_mood_tracker.moodTrackerActivity"
+            android:name="example.codeclan.com.activity_mood_tracker.MoodTrackerActivity"
             android:label="Activity Mood Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,9 +16,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".moodSummaryActivity"
+            android:name=".MoodSummaryActivity"
             android:label="@string/summary_activity_title"
-            android:parentActivityName="example.codeclan.com.activity_mood_tracker.moodTrackerActivity">
+            android:parentActivityName="example.codeclan.com.activity_mood_tracker.MoodTrackerActivity">
         </activity>
 
 

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Created by user on 17/03/2017.
  */
-public class activityRecordTest {
+public class ActivityRecordTest {
 
 
     ActivityRecord activityRecord;

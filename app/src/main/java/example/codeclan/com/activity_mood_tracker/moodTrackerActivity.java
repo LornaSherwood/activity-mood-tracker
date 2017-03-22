@@ -2,6 +2,7 @@ package example.codeclan.com.activity_mood_tracker;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.google.gson.JsonParser;
  * Created by user on 19/03/2017.
  */
 
-public class moodTrackerActivity extends AppCompatActivity {
+public class MoodTrackerActivity extends AppCompatActivity {
 
     Spinner sportChoice;
     EditText durationText;
@@ -52,7 +53,8 @@ public class moodTrackerActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         moodChoice.setAdapter(adapter2);
 
-        mPrefs = getPreferences(MODE_PRIVATE);
+//        mPrefs = getPreferences(MODE_PRIVATE);
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 
@@ -72,7 +74,15 @@ public class moodTrackerActivity extends AppCompatActivity {
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
 
         // get existing activity summary //
-        Gson gson = new Gson();
+
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        String thing = sharedPreferences.getString("ActivitySummary", "");
+//
+//        if (thing != "") {
+//
+//        }
+
+
         String json = mPrefs.getString("ActivitySummary", "");
 
 
@@ -102,6 +112,10 @@ public class moodTrackerActivity extends AppCompatActivity {
             String json2 = gson2.toJson(summary);
             prefsEditor.putString("ActivitySummary", json2);
             prefsEditor.apply();
+//
+//            SharedPreferences.Editor editor = mPrefs.edit();
+//            editor.putString("ActivitySummary", summary);
+//            editor.commit();
 
         } else {
             ActivitySummary newSummary = new ActivitySummary();
@@ -117,10 +131,10 @@ public class moodTrackerActivity extends AppCompatActivity {
     public void onSummaryButtonClicked(View button) {
         Log.d(getClass().toString(), "onSummaryButtonClicked was called");
 
-        String duration = durationText.getText().toString();
+//        String duration = durationText.getText().toString();
 
-        intent = new Intent(moodTrackerActivity.this, moodSummaryActivity.class);
-        intent.putExtra("durationEntry", duration);
+        intent = new Intent(this, MoodSummaryActivity.class);
+//        intent.putExtra("durationEntry", duration);
         startActivity(intent);
 
     }
